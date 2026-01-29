@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strategic AI analysis delivered daily. Expert insights on artificial intelligence trends, markets, and competitive dynamics.">
+    <meta name="keywords" content="AI analysis, artificial intelligence, tech news, strategic insights, AI trends">
+    <meta name="author" content="Nick Mehta">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Morning Brief - Strategic AI Analysis">
+    <meta property="og:description" content="Daily strategic analysis of AI trends, markets, and competitive dynamics">
+    <meta property="og:image" content="./assets/og-image.jpg">
+    
+    <title>AI Morning Brief - Strategic AI Analysis</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #4a4a4a;
+            --accent: #0066cc;
+            --light-gray: #f8f9fa;
+            --border: #e0e0e0;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: var(--white);
+        }
+        
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Featured Brief */
+        .featured {
+            background: var(--light-gray);
+            padding: 4rem 2rem;
+        }
+        
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .brief-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .brief-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+        
+        .brief-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .brief-excerpt {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .story-item {
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 6px;
+        }
+        
+        .story-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-item p {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .read-more:hover {
+            gap: 0.75rem;
+        }
+        
+        /* Archive */
+        .archive {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .archive h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        
+        .archive-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .archive-item {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+        
+        .archive-item:last-child {
+            border-bottom: none;
+        }
+        
+        .archive-date {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .archive-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .archive-item h3 a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .archive-item h3 a:hover {
+            color: var(--accent);
+        }
+        
+        .archive-snippet {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 2rem;
+        }
+        
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-size: 1rem;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/" class="logo">AI Morning Brief</a>
+            <ul class="nav-links">
+                <li><a href="#archive">Archive</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#subscribe">Subscribe</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Strategic AI Analysis,<br>Delivered Daily</h1>
+        <p>Expert insights on artificial intelligence trends, markets, and competitive dynamics—no hype, just strategic clarity.</p>
+        <a href="#subscribe" class="cta-button">Get Daily Briefs</a>
+    </section>
+    
+    <!-- Featured Brief -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="section-label">Latest Brief</div>
+            
+            <article class="brief-card">
+                <div class="brief-meta">
+                    <span>📅 January 29, 2026</span>
+                    <span>📖 15 min read</span>
+                    <span>🔍 9 stories analyzed</span>
+                </div>
+                
+                <h2>2026's "Show Me the Money" Mandate Exposes AI's Value Gap as Industry Pivots from AGI to Pragmatism</h2>
+                
+                <p class="brief-excerpt">
+                    The AI industry faces its accountability reckoning as enterprises demand measurable ROI, boards shift from counting pilots to counting dollars, and OpenAI's CEO declares AGI "not a super useful term" after trillion-dollar commitments. This synthesis explores how 2026 forces the transition from capability hype to operational value delivery.
+                </p>
+                
+                <div class="story-grid">
+                    <div class="story-item">
+                        <h3>💰 ROI Reckoning Arrives</h3>
+                        <p>Boards stop counting tokens and pilots, start demanding dollar returns as AI faces trillion-dollar accountability test.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <h3>🤖 "Lonely Agent" Crisis</h3>
+                        <p>Salesforce predicts hundreds of idle AI agents per employee as utilization gap becomes critical challenge.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <h3>🎯 AGI Goalpost Shifts</h3>
+                        <p>OpenAI CEO declares AGI "not useful term" after industry bet entire economy on achieving it.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <h3>🌍 World Models Rise</h3>
+                        <p>$276B gaming market by 2030 as AI pivots from language models to environment simulation.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <h3>🛡️ Defense AI Diversifies</h3>
+                        <p>Pentagon awards GenAI.mil to Alphabet, challenging Palantir's defense dominance.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <h3>📱 Wearable AI Emerges</h3>
+                        <p>Smart glasses and health rings normalize always-on inference, reducing interaction friction.</p>
+                    </div>
+                </div>
+                
+                <a href="./briefs/20260129.html" class="read-more">Read Full Analysis →</a>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Archive -->
+    <section class="archive" id="archive">
+        <h2>Recent Briefs</h2>
+        
+        <div class="archive-list">
+            <article class="archive-item">
+                <div class="archive-date">January 28, 2026</div>
+                <h3><a href="./briefs/20260128.html">Healthcare AI's Regulatory Void Meets Enterprise Maturation—2026's Accountability Crisis</a></h3>
+                <p class="archive-snippet">
+                    OpenAI's ChatGPT Health connects complete medical histories yet disclaims medical utility. UK's 59% AI self-diagnosis rate exposes healthcare system failure. The collision between capability and accountability forces crisis resolution.
+                </p>
+            </article>
+            
+            <article class="archive-item">
+                <div class="archive-date">January 27, 2026</div>
+                <h3><a href="./briefs/20260127.html">Samsung's HBM4 Breakthrough and EU Digital Markets Act Reshape AI Infrastructure Economics</a></h3>
+                <p class="archive-snippet">
+                    Samsung breaks SK Hynix HBM monopoly as NVIDIA qualification enters final stage. EU mandates Google data sharing. Big Tech earnings week shifts from AI capability narrative to monetization proof.
+                </p>
+            </article>
+            
+            <article class="archive-item">
+                <div class="archive-date">January 24, 2026</div>
+                <h3><a href="./briefs/20260124.html">DeepSeek's $6M Training Cost Disrupts AI Economics Thesis</a></h3>
+                <p class="archive-snippet">
+                    Chinese lab trains competitive LLM for $6M versus OpenAI's $100M+ spend. Capital intensity assumption challenged. Architectural efficiency potentially substitutes for hyperscale infrastructure.
+                </p>
+            </article>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter" id="subscribe">
+        <div class="newsletter-container">
+            <h2>Never Miss a Brief</h2>
+            <p>Get strategic AI analysis delivered to your inbox every morning. Unsubscribe anytime.</p>
+            
+            <form class="newsletter-form" action="#" method="POST">
+                <input type="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">
+                © 2026 AI Morning Brief. All rights reserved.
+            </div>
+            
+            <ul class="footer-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#archive">Archive</a></li>
+                <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
